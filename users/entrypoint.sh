@@ -6,7 +6,6 @@ echo $HOSTNAME
 
 # Apply database migrations
 echo "Applying database migrations"
-python3 users/manage.py makemigrations
 python3 users/manage.py migrate
 
 # Start server

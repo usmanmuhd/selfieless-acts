@@ -16,7 +16,7 @@ def setup_db():
         create table instances (
             id integer primary key,
             cont_id varchar(400),
-            port integer unique,
+            port integer unique
         )
         """
     )

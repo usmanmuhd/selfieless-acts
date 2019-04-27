@@ -1,8 +1,8 @@
 from threading import Thread
 
-from .models import setup_db, initialize_db, get_db
-from .tasks import check_containers_health
-from .utils import start_container
+from app.models import setup_db, initialize_db, get_db
+from app.tasks import check_containers_health
+from app.utils import start_container
 
 if __name__ == '__main__':
     setup_db()

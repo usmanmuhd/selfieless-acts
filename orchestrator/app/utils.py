@@ -1,7 +1,7 @@
 from . import client
 from .models import get_db
 
-IMAGE = ""
+IMAGE = "acts"
 
 
 def start_container(port):

@@ -220,8 +220,8 @@ def UploadAct(request):
 
 		#user validation
 		try:
-			headers = {'Origin':'3.210.166.12'}
-			users = requests.get("http://100.25.106.87/api/v1/users",data="{}", headers=headers).text
+			headers = {'Origin':'3.86.76.28'}
+			users = requests.get("http://3.84.18.5/api/v1/users",data="{}", headers=headers).text
 		except requests.exceptions.ConnectionError:
 			print("ConnectionError")
 			return Response({}, status = HTTP_400_BAD_REQUEST)

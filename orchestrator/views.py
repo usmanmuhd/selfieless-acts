@@ -5,6 +5,7 @@ import requests
 from . import app
 from .models import get_db
 from .tasks import auto_scale
+from .utils import handle_image
 
 methods_dict = {
     "GET": requests.get,
@@ -19,6 +20,11 @@ req_url = "http://127.0.0.1:%d/%s"
 @app.route("/<slug>")
 def act_reroute(slug):
     if not slug.startswith("api/v1/"):
+        if slug == "deploy":
+            data = request.get_json()
+            image = data["image"]
+            handle_image(image)
+            return jsonify({"success": True})
         return "The given URL does not belong to any containers"
     # re-route the request to acts container
     cur, con = get_db()
@@ -45,3 +51,7 @@ def act_reroute(slug):
     addr = req_url % (port, slug)
     resp = caller(addr, json=request.get_json())
     return jsonify(resp.json())
+
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=80)

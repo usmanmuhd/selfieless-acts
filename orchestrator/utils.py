@@ -14,3 +14,7 @@ def stop_container(port):
     cur.execute("select cont_id from instances where port=?", (port,))
     cid = cur.fetchone()[0]
     client.containers.get(cid).stop()
+
+
+def handle_image(image):
+    client.containers.run(image)
